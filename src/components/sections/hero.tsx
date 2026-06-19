@@ -2,36 +2,11 @@ import { Button } from "@/components/ui/button";
 import { Container } from "@/components/ui/container";
 
 const TILES = [
-  {
-    label: "foto · reunión de equipo",
-    className: "col-span-2 row-span-1 bg-forest text-sage",
-    pattern:
-      "repeating-linear-gradient(135deg, rgba(255,255,255,0.05) 0 12px, transparent 12px 24px)",
-  },
-  {
-    label: "oficina",
-    className: "bg-sand-100 text-muted-light",
-    pattern:
-      "repeating-linear-gradient(135deg, #e1ddcf 0 12px, #eceadf 12px 24px)",
-  },
-  {
-    label: "entrevista 1:1",
-    className: "bg-sand-accent text-[#fff3ea]",
-    pattern:
-      "repeating-linear-gradient(135deg, rgba(255,255,255,0.12) 0 12px, transparent 12px 24px)",
-  },
-  {
-    label: "colaboración",
-    className: "bg-sage text-[#3e5750]",
-    pattern:
-      "repeating-linear-gradient(135deg, #c0d4ca 0 12px, #cfe0d8 12px 24px)",
-  },
-  {
-    label: "presentación",
-    className: "bg-sand-100 text-muted-light",
-    pattern:
-      "repeating-linear-gradient(135deg, #e1ddcf 0 12px, #eceadf 12px 24px)",
-  },
+  { src: "/img1.png", alt: "Reunión de equipo", className: "col-span-2 row-span-1" },
+  { src: "/img2.png", alt: "Oficina", className: "" },
+  { src: "/img3.png", alt: "Entrevista 1:1", className: "" },
+  { src: "/img4.png", alt: "Colaboración", className: "" },
+  { src: "/img5.png", alt: "Presentación", className: "" },
 ];
 
 export function Hero() {
@@ -98,16 +73,19 @@ export function Hero() {
             </div>
           </div>
 
-          {/* Collage de imágenes (placeholders con leyenda; fotos reales → public/) */}
+          {/* Collage de imágenes (img1–img5 en public/) */}
           <div className="min-w-[300px] flex-[1_1_400px]">
             <div className="grid aspect-[4/5] grid-cols-2 grid-rows-[1.35fr_1fr_1fr] gap-2 overflow-hidden rounded-[18px] border border-sand-200 bg-sand-200">
               {TILES.map((tile) => (
                 <div
-                  key={tile.label}
-                  className={`relative flex items-end p-3.5 ${tile.className}`}
-                  style={{ backgroundImage: tile.pattern }}
+                  key={tile.src}
+                  className={`relative overflow-hidden ${tile.className}`}
                 >
-                  <span className="font-mono text-[11px]">{tile.label}</span>
+                  <img
+                    src={tile.src}
+                    alt={tile.alt}
+                    className="h-full w-full object-cover"
+                  />
                 </div>
               ))}
             </div>
