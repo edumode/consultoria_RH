@@ -6,8 +6,10 @@ import { logout } from "@/features/auth/actions";
 const NAV = [
   { href: "/admin", label: "Resumen" },
   { href: "/admin/leads", label: "Leads" },
+  { href: "/admin/procesos", label: "Procesos" },
   { href: "/admin/suscriptores", label: "Suscriptores" },
   { href: "/admin/posts", label: "Blog" },
+  { href: "/admin/usuarios", label: "Usuarios" },
 ];
 
 export default async function AdminLayout({
@@ -20,25 +22,8 @@ export default async function AdminLayout({
   // Sin sesión → al login (el proxy ya lo cubre, esto es defensa en profundidad).
   if (!user) redirect("/login");
 
-  // Autenticado pero NO en la allowlist → acceso denegado (no bucle de redirección).
-  if (!isAdmin) {
-    return (
-      <div className="flex min-h-screen flex-col items-center justify-center gap-5 bg-sand-100 px-6 text-center">
-        <h1 className="font-serif text-2xl font-semibold text-ink">
-          Acceso no autorizado
-        </h1>
-        <p className="max-w-sm text-stone">
-          Tu cuenta ({user.email}) no tiene permisos para el panel. Si crees que
-          es un error, contacta al administrador.
-        </p>
-        <form action={logout}>
-          <button className="rounded-lg bg-forest px-5 py-2.5 text-sm font-semibold text-white hover:bg-forest-dark">
-            Cerrar sesión
-          </button>
-        </form>
-      </div>
-    );
-  }
+  // Autenticado pero sin rol admin → a su portal de cliente.
+  if (!isAdmin) redirect("/portal");
 
   return (
     <div className="flex min-h-screen flex-col bg-sand-100">

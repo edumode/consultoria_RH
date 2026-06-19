@@ -1,9 +1,11 @@
 import { NextResponse } from "next/server";
 import { createClient } from "@/lib/supabase/server";
+import { getSesion, rutaInicio } from "@/features/auth/session";
 
 /**
- * Callback de OAuth (Google / Microsoft). Supabase redirige aquí con un `code`
- * que intercambiamos por una sesión y dejamos las cookies de auth listas.
+ * Callback de OAuth (Google) y de confirmación de correo. Supabase redirige aquí
+ * con un `code` que intercambiamos por una sesión; luego enviamos al usuario a su
+ * área según el rol (admin → /admin, customer → /portal).
  */
 export async function GET(request: Request) {
   const { searchParams, origin } = new URL(request.url);
@@ -13,7 +15,8 @@ export async function GET(request: Request) {
     const supabase = await createClient();
     const { error } = await supabase.auth.exchangeCodeForSession(code);
     if (!error) {
-      return NextResponse.redirect(`${origin}/admin`);
+      const { role } = await getSesion();
+      return NextResponse.redirect(`${origin}${rutaInicio(role)}`);
     }
   }
 

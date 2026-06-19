@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { Container } from "@/components/ui/container";
 import { Logo } from "./logo";
+import { AuthButton } from "./auth-button";
 
 const NAV = [
   { href: "/#servicios", label: "Servicios" },
@@ -25,13 +26,8 @@ export function Header() {
             </Link>
           ))}
 
-          {/* Acceso al panel (login/signup). Discreto, separado del CTA. */}
-          <Link
-            href="/login"
-            className="text-[15px] font-medium text-muted transition-colors hover:text-forest"
-          >
-            Acceder
-          </Link>
+          {/* Acceso: "Acceder" sin sesión, "Mi cuenta" con sesión. */}
+          <AuthButton />
 
           <Link
             href="#contacto"

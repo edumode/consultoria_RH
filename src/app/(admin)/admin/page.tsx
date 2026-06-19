@@ -18,15 +18,23 @@ function Card({ label, value }: { label: string; value: number | string }) {
 export default async function ResumenPage() {
   const supabase = await createClient();
 
-  const [{ count: totalLeads }, { count: nuevos }, { count: suscriptores }] =
-    await Promise.all([
-      supabase.from("leads").select("*", { count: "exact", head: true }),
-      supabase
-        .from("leads")
-        .select("*", { count: "exact", head: true })
-        .eq("estado", "nuevo"),
-      supabase.from("suscriptores").select("*", { count: "exact", head: true }),
-    ]);
+  const [
+    { count: totalLeads },
+    { count: nuevos },
+    { count: procesosActivos },
+    { count: suscriptores },
+  ] = await Promise.all([
+    supabase.from("leads").select("*", { count: "exact", head: true }),
+    supabase
+      .from("leads")
+      .select("*", { count: "exact", head: true })
+      .eq("estado", "nuevo"),
+    supabase
+      .from("procesos")
+      .select("*", { count: "exact", head: true })
+      .neq("estado", "completado"),
+    supabase.from("suscriptores").select("*", { count: "exact", head: true }),
+  ]);
 
   const { data: recientes } = await supabase
     .from("leads")
@@ -38,9 +46,10 @@ export default async function ResumenPage() {
     <div>
       <h1 className="mb-6 font-serif text-2xl font-semibold text-ink">Resumen</h1>
 
-      <div className="grid gap-4 sm:grid-cols-3">
+      <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
         <Card label="Leads totales" value={totalLeads ?? 0} />
         <Card label="Leads nuevos" value={nuevos ?? 0} />
+        <Card label="Procesos activos" value={procesosActivos ?? 0} />
         <Card label="Suscriptores" value={suscriptores ?? 0} />
       </div>
 

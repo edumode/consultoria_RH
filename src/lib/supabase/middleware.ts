@@ -39,9 +39,12 @@ export async function updateSession(request: NextRequest) {
     data: { user },
   } = await supabase.auth.getUser();
 
-  // Blindaje barato de /admin: si no hay sesión, a /login.
-  // La verificación de admin (allowlist) se hace en el layout de /admin y en RLS.
-  if (!user && request.nextUrl.pathname.startsWith("/admin")) {
+  // Blindaje barato de rutas privadas: sin sesión, a /login.
+  // El rol (admin vs cliente) se resuelve en los layouts de /admin y /portal y en RLS.
+  const { pathname } = request.nextUrl;
+  const esRutaPrivada =
+    pathname.startsWith("/admin") || pathname.startsWith("/portal");
+  if (!user && esRutaPrivada) {
     const url = request.nextUrl.clone();
     url.pathname = "/login";
     return NextResponse.redirect(url);

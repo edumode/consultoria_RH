@@ -65,6 +65,63 @@ export type Database = {
         }
         Relationships: []
       }
+      profiles: {
+        Row: {
+          created_at: string
+          email: string | null
+          id: string
+          role: string
+        }
+        Insert: {
+          created_at?: string
+          email?: string | null
+          id: string
+          role?: string
+        }
+        Update: {
+          created_at?: string
+          email?: string | null
+          id?: string
+          role?: string
+        }
+        Relationships: []
+      }
+      procesos: {
+        Row: {
+          cliente_email: string
+          created_at: string
+          descripcion: string | null
+          estado: string
+          id: string
+          lead_id: string | null
+          notas: string | null
+          titulo: string
+          updated_at: string
+        }
+        Insert: {
+          cliente_email: string
+          created_at?: string
+          descripcion?: string | null
+          estado?: string
+          id?: string
+          lead_id?: string | null
+          notas?: string | null
+          titulo: string
+          updated_at?: string
+        }
+        Update: {
+          cliente_email?: string
+          created_at?: string
+          descripcion?: string | null
+          estado?: string
+          id?: string
+          lead_id?: string | null
+          notas?: string | null
+          titulo?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
       posts: {
         Row: {
           contenido: string

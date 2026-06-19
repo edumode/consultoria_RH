@@ -4,6 +4,7 @@ import { headers } from "next/headers";
 import { redirect } from "next/navigation";
 import { z } from "zod";
 import { createClient } from "@/lib/supabase/server";
+import { getSesion, rutaInicio } from "./session";
 
 export async function oauthSignIn() {
   const hdrs = await headers();
@@ -51,7 +52,8 @@ export async function login(
     return { status: "error", message: "Correo o contraseña incorrectos." };
   }
 
-  redirect("/admin");
+  const { role } = await getSesion();
+  redirect(rutaInicio(role));
 }
 
 export async function signup(
@@ -82,7 +84,9 @@ export async function signup(
     return { status: "check_email" };
   }
 
-  redirect("/admin");
+  // Usuario recién creado → rol customer → su portal.
+  const { role } = await getSesion();
+  redirect(rutaInicio(role));
 }
 
 export async function logout() {

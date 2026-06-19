@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { createClient } from "@/lib/supabase/server";
 
 export const metadata: Metadata = { title: "Leads" };
@@ -36,6 +37,7 @@ export default async function LeadsPage() {
                 <th className="px-5 py-3 font-semibold">Servicio</th>
                 <th className="px-5 py-3 font-semibold">Estado</th>
                 <th className="px-5 py-3 font-semibold">Fecha</th>
+                <th className="px-5 py-3 font-semibold text-right">Acción</th>
               </tr>
             </thead>
             <tbody>
@@ -66,6 +68,14 @@ export default async function LeadsPage() {
                   </td>
                   <td className="px-5 py-3 text-muted">
                     {new Date(lead.created_at).toLocaleDateString("es")}
+                  </td>
+                  <td className="px-5 py-3 text-right">
+                    <Link
+                      href={`/admin/procesos/nuevo?email=${encodeURIComponent(lead.email)}&lead=${lead.id}`}
+                      className="text-xs font-medium text-forest hover:underline"
+                    >
+                      Crear proceso
+                    </Link>
                   </td>
                 </tr>
               ))}
