@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { PostForm } from "@/features/posts/post-form";
+import { isResendConfigured } from "@/features/posts/email";
 
 export const metadata: Metadata = { title: "Nueva entrada" };
 
@@ -16,7 +17,7 @@ export default function NuevoPostPage() {
       <h1 className="mt-4 mb-7 font-serif text-2xl font-semibold text-ink">
         Nueva entrada
       </h1>
-      <PostForm />
+      <PostForm newsletterDisponible={isResendConfigured} />
     </div>
   );
 }

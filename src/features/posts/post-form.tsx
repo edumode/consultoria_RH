@@ -25,7 +25,13 @@ const btnPrimary =
 const btnOutline =
   "rounded-[10px] border border-sand-300 px-5 py-3 text-[15px] font-semibold text-ink-soft transition-colors hover:border-forest hover:text-forest disabled:opacity-60";
 
-export function PostForm({ post }: { post?: PostFormData }) {
+export function PostForm({
+  post,
+  newsletterDisponible = false,
+}: {
+  post?: PostFormData;
+  newsletterDisponible?: boolean;
+}) {
   const [state, formAction, pending] = useActionState(guardarPost, INITIAL);
   const [programar, setProgramar] = useState(false);
 
@@ -102,15 +108,17 @@ export function PostForm({ post }: { post?: PostFormData }) {
         />
       </div>
 
-      <label className="flex items-center gap-2.5 text-[15px] text-ink-soft">
-        <input
-          type="checkbox"
-          name="enviar_newsletter"
-          defaultChecked={post?.enviar_newsletter}
-          className="h-4 w-4 accent-forest"
-        />
-        Enviar también por correo a los suscriptores al publicar
-      </label>
+      {newsletterDisponible && (
+        <label className="flex items-center gap-2.5 text-[15px] text-ink-soft">
+          <input
+            type="checkbox"
+            name="enviar_newsletter"
+            defaultChecked={post?.enviar_newsletter}
+            className="h-4 w-4 accent-forest"
+          />
+          Enviar también por correo a los suscriptores al publicar
+        </label>
+      )}
 
       <label className="flex items-center gap-2.5 text-[15px] text-ink-soft">
         <input

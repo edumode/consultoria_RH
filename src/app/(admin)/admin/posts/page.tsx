@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { createClient } from "@/lib/supabase/server";
 import { eliminarPost, enviarNewsletterAction } from "@/features/posts/actions";
+import { isResendConfigured } from "@/features/posts/email";
 
 export const metadata: Metadata = { title: "Blog" };
 
@@ -72,7 +73,9 @@ export default async function PostsPage({
                 <th className="px-5 py-3 font-semibold">Título</th>
                 <th className="px-5 py-3 font-semibold">Estado</th>
                 <th className="px-5 py-3 font-semibold">Publicación</th>
-                <th className="px-5 py-3 font-semibold">Newsletter</th>
+                {isResendConfigured && (
+                  <th className="px-5 py-3 font-semibold">Newsletter</th>
+                )}
                 <th className="px-5 py-3 font-semibold text-right">Acciones</th>
               </tr>
             </thead>
@@ -97,13 +100,15 @@ export default async function PostsPage({
                     </span>
                   </td>
                   <td className="px-5 py-3 text-muted">{fecha(p.publicado_en)}</td>
-                  <td className="px-5 py-3 text-muted">
-                    {p.newsletter_enviado_en
-                      ? `Enviada ${fecha(p.newsletter_enviado_en)}`
-                      : p.enviar_newsletter
-                        ? "Pendiente"
-                        : "—"}
-                  </td>
+                  {isResendConfigured && (
+                    <td className="px-5 py-3 text-muted">
+                      {p.newsletter_enviado_en
+                        ? `Enviada ${fecha(p.newsletter_enviado_en)}`
+                        : p.enviar_newsletter
+                          ? "Pendiente"
+                          : "—"}
+                    </td>
+                  )}
                   <td className="px-5 py-3">
                     <div className="flex items-center justify-end gap-2">
                       {p.estado === "publicado" && (
@@ -114,14 +119,16 @@ export default async function PostsPage({
                           Ver
                         </Link>
                       )}
-                      {p.estado === "publicado" && !p.newsletter_enviado_en && (
-                        <form action={enviarNewsletterAction}>
-                          <input type="hidden" name="id" value={p.id} />
-                          <button className="text-xs font-medium text-clay hover:underline">
-                            Enviar newsletter
-                          </button>
-                        </form>
-                      )}
+                      {isResendConfigured &&
+                        p.estado === "publicado" &&
+                        !p.newsletter_enviado_en && (
+                          <form action={enviarNewsletterAction}>
+                            <input type="hidden" name="id" value={p.id} />
+                            <button className="text-xs font-medium text-clay hover:underline">
+                              Enviar newsletter
+                            </button>
+                          </form>
+                        )}
                       <Link
                         href={`/admin/posts/${p.id}/editar`}
                         className="text-xs font-medium text-forest hover:underline"

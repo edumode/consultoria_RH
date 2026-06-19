@@ -3,6 +3,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { createClient } from "@/lib/supabase/server";
 import { PostForm } from "@/features/posts/post-form";
+import { isResendConfigured } from "@/features/posts/email";
 
 export const metadata: Metadata = { title: "Editar entrada" };
 
@@ -35,6 +36,7 @@ export default async function EditarPostPage({
         Editar entrada
       </h1>
       <PostForm
+        newsletterDisponible={isResendConfigured}
         post={{
           id: post.id,
           titulo: post.titulo,
