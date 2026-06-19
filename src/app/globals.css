@@ -1,0 +1,65 @@
+@import "tailwindcss";
+
+/*
+ * Design system de VÉRTICE — Consultoría RH.
+ * Paleta y tipografías extraídas del diseño original
+ * (design/original-landing.html). Tokens primitivos + semánticos
+ * para que toda página/feature nueva herede la identidad visual.
+ */
+@theme {
+  /* --- Marca (verde bosque) --- */
+  --color-forest: #1f4d44;
+  --color-forest-dark: #163831;
+
+  /* --- Fondos cálidos (crema / arena) --- */
+  --color-cream: #f6f4ee;
+  --color-cream-light: #faf9f4;
+  --color-sand-100: #eceadf;
+  --color-sand-200: #e6e2d8;
+  --color-sand-300: #e0dccf;
+  --color-sand-400: #c9c5ba;
+
+  /* --- Acentos (terracota / arcilla) --- */
+  --color-sage: #cfe0d8;
+  --color-sand-accent: #d99b6a;
+  --color-clay: #c97a45;
+  --color-terracotta: #b4452e;
+
+  /* --- Texto / neutros cálidos --- */
+  --color-ink: #161613;
+  --color-ink-soft: #3c382f;
+  --color-stone: #545046;
+  --color-muted: #7a766b;
+  --color-muted-light: #8a8579;
+
+  /* --- Tokens semánticos (úsalos en componentes) --- */
+  --color-background: var(--color-cream);
+  --color-foreground: var(--color-ink);
+  --color-primary: var(--color-forest);
+  --color-primary-foreground: var(--color-cream-light);
+  --color-accent: var(--color-terracotta);
+  --color-border: var(--color-sand-300);
+}
+
+/* Las fuentes se inyectan en runtime vía next/font (ver layout.tsx),
+   por eso van en `inline` para que Tailwind conserve el var(). */
+@theme inline {
+  --font-sans: var(--font-hanken), ui-sans-serif, system-ui, sans-serif;
+  --font-serif: var(--font-newsreader), Georgia, "Times New Roman", serif;
+}
+
+@layer base {
+  body {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    font-family: var(--font-sans);
+  }
+
+  h1,
+  h2,
+  h3 {
+    font-family: var(--font-serif);
+    font-weight: 600;
+    letter-spacing: -0.01em;
+  }
+}
