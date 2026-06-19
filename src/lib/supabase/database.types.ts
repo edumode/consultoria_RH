@@ -65,6 +65,51 @@ export type Database = {
         }
         Relationships: []
       }
+      posts: {
+        Row: {
+          contenido: string
+          created_at: string
+          enviar_newsletter: boolean
+          estado: string
+          extracto: string | null
+          id: string
+          newsletter_enviado_en: string | null
+          portada_url: string | null
+          publicado_en: string | null
+          slug: string
+          titulo: string
+          updated_at: string
+        }
+        Insert: {
+          contenido?: string
+          created_at?: string
+          enviar_newsletter?: boolean
+          estado?: string
+          extracto?: string | null
+          id?: string
+          newsletter_enviado_en?: string | null
+          portada_url?: string | null
+          publicado_en?: string | null
+          slug: string
+          titulo: string
+          updated_at?: string
+        }
+        Update: {
+          contenido?: string
+          created_at?: string
+          enviar_newsletter?: boolean
+          estado?: string
+          extracto?: string | null
+          id?: string
+          newsletter_enviado_en?: string | null
+          portada_url?: string | null
+          publicado_en?: string | null
+          slug?: string
+          titulo?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
       leads: {
         Row: {
           created_at: string
@@ -158,6 +203,7 @@ export type Database = {
     }
     Functions: {
       is_admin: { Args: never; Returns: boolean }
+      baja_suscriptor: { Args: { p_id: string }; Returns: undefined }
     }
     Enums: {
       [_ in never]: never

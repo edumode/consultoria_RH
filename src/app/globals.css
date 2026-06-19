@@ -63,3 +63,84 @@
     letter-spacing: -0.01em;
   }
 }
+
+/*
+ * Estilo del cuerpo de un artículo de blog (HTML generado desde Markdown).
+ * Tailwind no cascadea a hijos de dangerouslySetInnerHTML, así que estilamos
+ * los elementos directamente bajo .prosa.
+ */
+.prosa {
+  font-size: 1.0625rem;
+  line-height: 1.75;
+  color: var(--color-ink-soft);
+}
+.prosa > * + * {
+  margin-top: 1.25em;
+}
+.prosa h2 {
+  font-family: var(--font-serif);
+  font-size: 1.6rem;
+  font-weight: 600;
+  color: var(--color-ink);
+  margin-top: 2em;
+  letter-spacing: -0.01em;
+}
+.prosa h3 {
+  font-family: var(--font-serif);
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: var(--color-ink);
+  margin-top: 1.6em;
+}
+.prosa a {
+  color: var(--color-forest);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+.prosa strong {
+  color: var(--color-ink);
+  font-weight: 600;
+}
+.prosa ul,
+.prosa ol {
+  padding-left: 1.4em;
+}
+.prosa ul {
+  list-style: disc;
+}
+.prosa ol {
+  list-style: decimal;
+}
+.prosa li + li {
+  margin-top: 0.4em;
+}
+.prosa blockquote {
+  border-left: 3px solid var(--color-clay);
+  padding-left: 1.1em;
+  color: var(--color-stone);
+  font-style: italic;
+}
+.prosa img {
+  border-radius: 12px;
+}
+.prosa code {
+  background: var(--color-sand-200);
+  padding: 0.15em 0.4em;
+  border-radius: 6px;
+  font-size: 0.9em;
+}
+.prosa pre {
+  background: var(--color-ink);
+  color: var(--color-cream-light);
+  padding: 1.1em;
+  border-radius: 12px;
+  overflow-x: auto;
+}
+.prosa pre code {
+  background: transparent;
+  padding: 0;
+}
+.prosa hr {
+  border: none;
+  border-top: 1px solid var(--color-sand-300);
+}

@@ -3,8 +3,9 @@ import { Container } from "@/components/ui/container";
 import { Logo } from "./logo";
 
 const NAV = [
-  { href: "#servicios", label: "Servicios" },
-  { href: "#porque", label: "Por qué nosotros" },
+  { href: "/#servicios", label: "Servicios" },
+  { href: "/#porque", label: "Por qué nosotros" },
+  { href: "/blog", label: "Blog" },
 ];
 
 export function Header() {
