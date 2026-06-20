@@ -71,8 +71,8 @@ export default async function ResumenPage() {
             <thead className="border-b border-sand-200 text-xs uppercase tracking-wide text-muted">
               <tr>
                 <th className="px-5 py-3 font-semibold">Nombre</th>
-                <th className="px-5 py-3 font-semibold">Empresa</th>
-                <th className="px-5 py-3 font-semibold">Servicio</th>
+                <th className="hidden px-5 py-3 font-semibold sm:table-cell">Empresa</th>
+                <th className="hidden px-5 py-3 font-semibold sm:table-cell">Servicio</th>
                 <th className="px-5 py-3 font-semibold">Fecha</th>
               </tr>
             </thead>
@@ -80,8 +80,8 @@ export default async function ResumenPage() {
               {recientes.map((lead) => (
                 <tr key={lead.id} className="border-b border-sand-100 last:border-0">
                   <td className="px-5 py-3 text-ink">{lead.nombre}</td>
-                  <td className="px-5 py-3 text-stone">{lead.empresa ?? "—"}</td>
-                  <td className="px-5 py-3 text-stone">{lead.servicio ?? "—"}</td>
+                  <td className="hidden px-5 py-3 text-stone sm:table-cell">{lead.empresa ?? "—"}</td>
+                  <td className="hidden px-5 py-3 text-stone sm:table-cell">{lead.servicio ?? "—"}</td>
                   <td className="px-5 py-3 text-muted">
                     {new Date(lead.created_at).toLocaleDateString("es")}
                   </td>
