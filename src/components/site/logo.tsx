@@ -14,12 +14,12 @@ export function Logo({
   return (
     <Link
       href={href}
-      className={cn("inline-flex items-baseline gap-2.5", className)}
+      className={cn("inline-flex shrink-0 items-baseline gap-2.5", className)}
       aria-label="Pilar Humano — Consultoría RH, inicio"
     >
       <span
         className={cn(
-          "font-serif text-2xl font-semibold tracking-[0.04em]",
+          "font-serif text-xl font-semibold tracking-[0.04em] sm:text-2xl",
           tone === "light" ? "text-white" : "text-ink",
         )}
       >
@@ -27,7 +27,7 @@ export function Logo({
       </span>
       <span
         className={cn(
-          "text-[11px] font-semibold uppercase tracking-[0.18em]",
+          "hidden text-[11px] font-semibold uppercase tracking-[0.18em] min-[360px]:inline-block",
           tone === "light" ? "text-muted-light" : "text-muted",
         )}
       >

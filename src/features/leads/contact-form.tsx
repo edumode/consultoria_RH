@@ -12,7 +12,7 @@ const labelClass = "mb-[7px] block text-[13px] font-semibold text-ink-soft";
 const errorClass = "mt-1.5 text-[13px] text-terracotta";
 
 const cardClass =
-  "min-w-[300px] flex-[1_1_440px] rounded-[18px] border border-sand-200 bg-white p-[34px] shadow-[0_20px_50px_-30px_rgba(0,0,0,0.3)]";
+  "min-w-0 flex-[1_1_440px] rounded-[18px] border border-sand-200 bg-white p-6 shadow-[0_20px_50px_-30px_rgba(0,0,0,0.3)] sm:p-[34px]";
 
 export function ContactForm() {
   const [state, formAction, pending] = useActionState(submitLead, INITIAL);

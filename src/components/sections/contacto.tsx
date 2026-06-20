@@ -13,7 +13,7 @@ export function Contacto() {
     <section id="contacto">
       <Container className="py-22">
         <div className="flex flex-wrap items-start gap-16">
-          <div className="min-w-[300px] flex-[1_1_380px]">
+          <div className="min-w-0 flex-[1_1_380px]">
             <Eyebrow>Hablemos</Eyebrow>
             <h2 className="mt-3.5 font-serif text-4xl font-medium leading-tight tracking-[-0.01em] text-ink">
               Mejoremos tu equipo, juntos

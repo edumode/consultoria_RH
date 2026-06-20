@@ -15,7 +15,7 @@ export function Hero() {
       <Container className="py-16 sm:py-[72px] lg:pt-[84px]">
         <div className="flex flex-wrap items-center gap-16">
           {/* Columna de texto */}
-          <div className="min-w-[320px] flex-[1_1_480px]">
+          <div className="min-w-0 flex-[1_1_480px]">
             <div className="mb-6 inline-flex items-center gap-2.5">
               <span className="inline-block h-px w-6 bg-clay" />
               <span className="text-xs font-semibold uppercase tracking-[0.16em] text-clay">
@@ -23,7 +23,7 @@ export function Hero() {
               </span>
             </div>
 
-            <h1 className="font-serif text-5xl font-medium leading-[1.06] tracking-[-0.015em] text-ink sm:text-[58px]">
+            <h1 className="font-serif text-[40px] font-medium leading-[1.08] tracking-[-0.015em] text-ink sm:text-[58px] sm:leading-[1.06]">
               Encuentra el talento perfecto y{" "}
               <span className="italic text-forest">potencia tu empresa</span>.
             </h1>
@@ -74,7 +74,7 @@ export function Hero() {
           </div>
 
           {/* Collage de imágenes (img1–img5 en public/) */}
-          <div className="min-w-[300px] flex-[1_1_400px]">
+          <div className="min-w-0 flex-[1_1_400px]">
             <div className="grid aspect-[4/5] grid-cols-2 grid-rows-[1.35fr_1fr_1fr] gap-2 overflow-hidden rounded-[18px] border border-sand-200 bg-sand-200">
               {TILES.map((tile) => (
                 <div

@@ -5,7 +5,7 @@ export function PorQueNosotros() {
   return (
     <section id="porque" className="bg-forest-dark text-[#eef2ef]">
       <Container className="flex flex-wrap gap-16 py-22">
-        <div className="min-w-[300px] flex-[1_1_360px]">
+        <div className="min-w-0 flex-[1_1_360px]">
           <span className="text-xs font-semibold uppercase tracking-[0.16em] text-sand-accent">
             Por qué elegirnos
           </span>
@@ -19,7 +19,7 @@ export function PorQueNosotros() {
           </p>
         </div>
 
-        <div className="grid min-w-[300px] flex-[1_1_420px] gap-4">
+        <div className="grid min-w-0 flex-[1_1_420px] gap-4">
           {BENEFICIOS.map((b) => (
             <div
               key={b.titulo}

@@ -53,6 +53,9 @@
     background-color: var(--color-background);
     color: var(--color-foreground);
     font-family: var(--font-sans);
+    /* Red de seguridad: nunca scroll horizontal. `clip` (no `hidden`) para no
+       romper el position: sticky del header. */
+    overflow-x: clip;
   }
 
   h1,
