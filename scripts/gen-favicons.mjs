@@ -5,7 +5,7 @@ import { writeFileSync } from "node:fs";
 
 const SRC = "public/logo.svg";
 const APP = "src/app";
-const BG = "#fdfaf3";
+const BG = "#f7ede5"; // fondo crema propio del logo (sin costuras al recortar cuadrado)
 
 async function png(size) {
   // ensureAlpha() → PNG en RGBA (Next exige RGBA para los PNG dentro del .ico).
@@ -18,6 +18,10 @@ async function png(size) {
 
 const apple = await png(180);
 writeFileSync(`${APP}/apple-icon.png`, apple);
+
+// logo.png — versión raster del emblema (la usa la imagen Open Graph).
+const logoPng = await sharp(SRC, { density: 300 }).resize(512).png().toBuffer();
+writeFileSync("public/logo.png", logoPng);
 
 const sizes = [16, 32, 48];
 const imgs = [];

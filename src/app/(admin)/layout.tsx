@@ -37,7 +37,8 @@ export default async function AdminLayout({
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img src="/logo.svg" alt="" className="h-7 w-auto rounded-[5px]" />
             <span>
-              Pilar Humano
+              <span className="text-forest">Pilar </span>
+              <span className="text-clay">Humano</span>
               <span className="ml-2 align-middle font-sans text-[11px] font-semibold uppercase tracking-[0.18em] text-muted">
                 Panel
               </span>

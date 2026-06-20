@@ -30,11 +30,12 @@ export default function OpengraphImage() {
         }}
       >
         {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img src={logoSrc} width={104} height={124} style={{ borderRadius: 10 }} />
+        <img src={logoSrc} width={112} height={122} style={{ borderRadius: 12 }} />
 
         <div style={{ display: "flex", flexDirection: "column", marginTop: 36 }}>
-          <div style={{ fontSize: 92, fontWeight: 700, letterSpacing: -1 }}>
-            Pilar Humano
+          <div style={{ display: "flex", fontSize: 92, fontWeight: 700, letterSpacing: -1 }}>
+            <span style={{ color: "#1f4d44", marginRight: 24 }}>Pilar</span>
+            <span style={{ color: "#c97a45" }}>Humano</span>
           </div>
           <div
             style={{
