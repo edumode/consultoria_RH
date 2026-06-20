@@ -58,6 +58,12 @@ export default async function AdminLayout({
           </nav>
 
           <div className="ml-auto flex items-center gap-2.5 md:ml-0">
+            <Link
+              href="/"
+              className="hidden text-[13px] font-medium text-ink-soft transition-colors hover:text-forest md:inline"
+            >
+              Ver sitio ↗
+            </Link>
             <span className="hidden text-[13px] text-muted lg:inline">
               {user.email}
             </span>

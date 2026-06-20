@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Hanken_Grotesk, Newsreader } from "next/font/google";
+import { SITE_URL } from "@/lib/site";
 import "./globals.css";
 
 const sans = Hanken_Grotesk({
@@ -15,13 +16,42 @@ const serif = Newsreader({
   display: "swap",
 });
 
+const TITULO = "Pilar Humano — Consultoría RH";
+const DESCRIPCION =
+  "Consultoría de Recursos Humanos: reclutamiento, selección, desarrollo y estrategia de talento para que tu empresa crezca con bases sólidas.";
+
 export const metadata: Metadata = {
+  metadataBase: new URL(SITE_URL),
   title: {
-    default: "Pilar Humano — Consultoría RH",
+    default: TITULO,
     template: "%s · Pilar Humano",
   },
-  description:
-    "Consultoría de Recursos Humanos: selección, desarrollo y estrategia de talento para tu organización.",
+  description: DESCRIPCION,
+  applicationName: "Pilar Humano",
+  keywords: [
+    "consultoría de recursos humanos",
+    "consultoría RH",
+    "reclutamiento",
+    "selección de personal",
+    "gestión de talento",
+    "capacitación",
+    "clima organizacional",
+    "México",
+  ],
+  alternates: { canonical: "/" },
+  openGraph: {
+    type: "website",
+    locale: "es_MX",
+    url: "/",
+    siteName: "Pilar Humano",
+    title: TITULO,
+    description: DESCRIPCION,
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: TITULO,
+    description: DESCRIPCION,
+  },
 };
 
 export default function RootLayout({

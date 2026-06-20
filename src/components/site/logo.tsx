@@ -23,10 +23,10 @@ export function Logo({
         alt=""
         className="h-8 w-auto rounded-[5px] sm:h-9"
       />
-      <span className="inline-flex items-baseline gap-2.5">
+      <span className="flex flex-col">
         <span
           className={cn(
-            "font-serif text-xl font-semibold tracking-[0.04em] sm:text-2xl",
+            "font-serif text-xl font-semibold leading-none tracking-[0.04em] sm:text-2xl",
             tone === "light" ? "text-white" : "text-ink",
           )}
         >
@@ -34,7 +34,7 @@ export function Logo({
         </span>
         <span
           className={cn(
-            "hidden text-[11px] font-semibold uppercase tracking-[0.18em] min-[360px]:inline-block",
+            "mt-1 text-[10px] font-semibold uppercase tracking-[0.2em] sm:text-[11px]",
             tone === "light" ? "text-muted-light" : "text-muted",
           )}
         >

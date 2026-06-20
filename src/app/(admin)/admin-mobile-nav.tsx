@@ -65,8 +65,17 @@ export function AdminMobileNav({
                   {item.label}
                 </Link>
               ))}
+
+              <Link
+                href="/"
+                onClick={close}
+                className="mt-1 rounded-lg border-t border-sand-200 px-2 pt-3 pb-1 text-[15px] font-medium text-forest transition-colors hover:underline"
+              >
+                Ver sitio ↗
+              </Link>
+
               {email && (
-                <div className="mt-1 border-t border-sand-200 px-2 pt-3 text-[13px] text-muted">
+                <div className="mt-1 px-2 pt-1 text-[13px] text-muted">
                   {email}
                 </div>
               )}

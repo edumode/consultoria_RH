@@ -31,7 +31,13 @@ export default async function PortalLayout({
               </span>
             </span>
           </Link>
-          <div className="flex items-center gap-4">
+          <div className="flex items-center gap-3 sm:gap-4">
+            <Link
+              href="/"
+              className="text-[13px] font-medium text-ink-soft transition-colors hover:text-forest"
+            >
+              Ver sitio ↗
+            </Link>
             <span className="hidden text-[13px] text-muted sm:inline">
               {user.email}
             </span>
