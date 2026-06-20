@@ -20,11 +20,15 @@ export default async function PortalLayout({
         <div className="mx-auto flex max-w-5xl items-center justify-between gap-6 px-6 py-4">
           <Link
             href="/portal"
-            className="font-serif text-lg font-semibold tracking-[0.14em] text-ink"
+            className="flex items-center gap-2 font-serif text-lg font-semibold tracking-[0.08em] text-ink"
           >
-            Pilar Humano
-            <span className="ml-2 align-middle font-sans text-[11px] font-semibold uppercase tracking-[0.18em] text-muted">
-              Mi cuenta
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img src="/logo.svg" alt="" className="h-7 w-auto rounded-[5px]" />
+            <span>
+              Pilar Humano
+              <span className="ml-2 align-middle font-sans text-[11px] font-semibold uppercase tracking-[0.18em] text-muted">
+                Mi cuenta
+              </span>
             </span>
           </Link>
           <div className="flex items-center gap-4">

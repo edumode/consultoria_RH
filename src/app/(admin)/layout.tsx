@@ -32,11 +32,15 @@ export default async function AdminLayout({
         <div className="relative mx-auto flex max-w-6xl items-center gap-4 px-6 py-3.5">
           <Link
             href="/admin"
-            className="font-serif text-lg font-semibold tracking-[0.08em] text-ink"
+            className="flex items-center gap-2 font-serif text-lg font-semibold tracking-[0.08em] text-ink"
           >
-            Pilar Humano
-            <span className="ml-2 align-middle font-sans text-[11px] font-semibold uppercase tracking-[0.18em] text-muted">
-              Panel
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img src="/logo.svg" alt="" className="h-7 w-auto rounded-[5px]" />
+            <span>
+              Pilar Humano
+              <span className="ml-2 align-middle font-sans text-[11px] font-semibold uppercase tracking-[0.18em] text-muted">
+                Panel
+              </span>
             </span>
           </Link>
 
