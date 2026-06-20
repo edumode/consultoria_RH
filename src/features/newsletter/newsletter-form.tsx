@@ -11,7 +11,7 @@ export function NewsletterForm() {
   if (state.status === "success") {
     return (
       <p className="text-[14.5px] text-sand-400">
-        ¡Gracias! Te avisaremos de novedades de VÉRTICE.
+        ¡Gracias! Te avisaremos de novedades de Pilar Humano.
       </p>
     );
   }

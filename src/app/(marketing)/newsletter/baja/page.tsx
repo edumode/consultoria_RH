@@ -31,7 +31,7 @@ export default async function BajaPage({
         </h1>
         <p className="mt-4 text-stone">
           {ok
-            ? "Ya no recibirás más correos de la newsletter de VÉRTICE. Puedes volver a suscribirte cuando quieras."
+            ? "Ya no recibirás más correos de la newsletter de Pilar Humano. Puedes volver a suscribirte cuando quieras."
             : "El enlace no es válido o ya no estás suscrito. Si el problema persiste, escríbenos."}
         </p>
         <Link

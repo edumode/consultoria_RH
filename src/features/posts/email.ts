@@ -3,7 +3,7 @@ import { markdownToHtml } from "@/lib/markdown";
 import { SITE_URL } from "@/lib/site";
 
 const API_KEY = process.env.RESEND_API_KEY ?? "";
-// Remitente verificado en Resend. Ej: "VÉRTICE <newsletter@tudominio.com>".
+// Remitente verificado en Resend. Ej: "Pilar Humano <newsletter@tudominio.com>".
 const FROM = process.env.RESEND_FROM ?? "";
 
 export const isResendConfigured = Boolean(API_KEY && FROM);
@@ -38,7 +38,7 @@ function plantilla(post: PostEmail, bajaUrl: string): string {
     <tr><td align="center">
       <table role="presentation" width="600" cellpadding="0" cellspacing="0" style="max-width:600px;width:100%">
         <tr><td style="padding:0 8px 24px">
-          <span style="font-family:Georgia,serif;font-size:20px;font-weight:600;letter-spacing:0.14em;color:#1f4d44">VÉRTICE</span>
+          <span style="font-family:Georgia,serif;font-size:20px;font-weight:600;letter-spacing:0.04em;color:#1f4d44">Pilar Humano</span>
           <span style="font-size:11px;text-transform:uppercase;letter-spacing:0.18em;color:#7a766b;margin-left:8px">Consultoría RH</span>
         </td></tr>
         <tr><td style="background:#ffffff;border-radius:18px;padding:36px 32px">
@@ -51,7 +51,7 @@ function plantilla(post: PostEmail, bajaUrl: string): string {
           </div>
         </td></tr>
         <tr><td style="padding:24px 8px;text-align:center;color:#7a766b;font-size:13px;line-height:1.6">
-          Recibes este correo porque te suscribiste a la newsletter de VÉRTICE.<br />
+          Recibes este correo porque te suscribiste a la newsletter de Pilar Humano.<br />
           <a href="${bajaUrl}" style="color:#7a766b;text-decoration:underline">Darme de baja</a>
         </td></tr>
       </table>

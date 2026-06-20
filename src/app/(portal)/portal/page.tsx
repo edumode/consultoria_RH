@@ -29,7 +29,7 @@ export default async function PortalPage() {
     <div>
       <h1 className="font-serif text-2xl font-semibold text-ink">Mis procesos</h1>
       <p className="mt-1 text-stone">
-        Aquí ves el avance de tus consultorías con VÉRTICE.
+        Aquí ves el avance de tus consultorías con Pilar Humano.
       </p>
 
       {procesos && procesos.length > 0 ? (

@@ -7,7 +7,7 @@ import { getPostsPublicados } from "@/features/posts/data";
 export const metadata: Metadata = {
   title: "Blog",
   description:
-    "Ideas, guías y novedades sobre gestión de talento y recursos humanos por VÉRTICE.",
+    "Ideas, guías y novedades sobre gestión de talento y recursos humanos por Pilar Humano.",
 };
 
 // Estático con revalidación: las entradas nuevas aparecen en ≤1h sin redeploy.

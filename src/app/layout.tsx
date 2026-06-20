@@ -17,8 +17,8 @@ const serif = Newsreader({
 
 export const metadata: Metadata = {
   title: {
-    default: "VÉRTICE — Consultoría RH",
-    template: "%s · VÉRTICE",
+    default: "Pilar Humano — Consultoría RH",
+    template: "%s · Pilar Humano",
   },
   description:
     "Consultoría de Recursos Humanos: selección, desarrollo y estrategia de talento para tu organización.",

@@ -28,7 +28,7 @@ export function ContactForm() {
             ¡Gracias, {state.nombre}!
           </h3>
           <p className="text-[16px] text-stone">
-            Recibimos tu solicitud. Un consultor de VÉRTICE te contactará muy
+            Recibimos tu solicitud. Un consultor de Pilar Humano te contactará muy
             pronto.
           </p>
         </div>

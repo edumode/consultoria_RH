@@ -74,7 +74,7 @@ export function AuthForm({ oauthError = false }: { oauthError?: boolean }) {
           {modo === "login" ? "Iniciar sesión" : "Crear cuenta"}
         </h1>
         <p className="mt-2 text-[15px] text-stone">
-          Acceso al panel de VÉRTICE.
+          Acceso al panel de Pilar Humano.
         </p>
       </div>
 

@@ -22,7 +22,7 @@ export default async function PortalLayout({
             href="/portal"
             className="font-serif text-lg font-semibold tracking-[0.14em] text-ink"
           >
-            VÉRTICE
+            Pilar Humano
             <span className="ml-2 align-middle font-sans text-[11px] font-semibold uppercase tracking-[0.18em] text-muted">
               Mi cuenta
             </span>

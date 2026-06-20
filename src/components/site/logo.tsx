@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { cn } from "@/lib/utils";
 
-/** Wordmark VÉRTICE + bajada "Consultoría RH". */
+/** Wordmark Pilar Humano + bajada "Consultoría RH". */
 export function Logo({
   href = "/",
   className,
@@ -15,15 +15,15 @@ export function Logo({
     <Link
       href={href}
       className={cn("inline-flex items-baseline gap-2.5", className)}
-      aria-label="VÉRTICE — Consultoría RH, inicio"
+      aria-label="Pilar Humano — Consultoría RH, inicio"
     >
       <span
         className={cn(
-          "font-serif text-2xl font-semibold tracking-[0.14em]",
+          "font-serif text-2xl font-semibold tracking-[0.04em]",
           tone === "light" ? "text-white" : "text-ink",
         )}
       >
-        VÉRTICE
+        Pilar Humano
       </span>
       <span
         className={cn(

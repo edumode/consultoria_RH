@@ -71,7 +71,7 @@ export function Footer() {
       <div className="border-t border-[#2a2823]">
         <Container className="flex flex-wrap items-center justify-between gap-4 py-5">
           <span className="text-[13px] text-[#7d796e]">
-            © {new Date().getFullYear()} VÉRTICE Consultoría RH. Todos los
+            © {new Date().getFullYear()} Pilar Humano Consultoría RH. Todos los
             derechos reservados.
           </span>
           <div className="flex gap-6">
