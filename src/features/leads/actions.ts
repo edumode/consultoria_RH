@@ -2,6 +2,7 @@
 
 import { z } from "zod";
 import { createClient } from "@/lib/supabase/server";
+import { notificarNuevoLead } from "./notify";
 
 const schema = z.object({
   nombre: z.string().trim().min(1, "Indícanos tu nombre."),
@@ -62,6 +63,9 @@ export async function submitLead(
       values,
     };
   }
+
+  // Aviso por correo al equipo (no bloquea ni rompe si Resend no está listo).
+  await notificarNuevoLead(parsed.data);
 
   return { status: "success", nombre: parsed.data.nombre };
 }
