@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { createClient } from "@/lib/supabase/server";
+import { eliminarLead } from "@/features/leads/actions";
 
 export const metadata: Metadata = { title: "Leads" };
 
@@ -32,14 +33,22 @@ function EstadoBadge({ estado }: { estado: string }) {
   );
 }
 
-function CrearProceso({ lead }: { lead: LeadRow }) {
+function Acciones({ lead }: { lead: LeadRow }) {
   return (
-    <Link
-      href={`/admin/procesos/nuevo?email=${encodeURIComponent(lead.email)}&lead=${lead.id}`}
-      className="text-xs font-medium text-forest hover:underline"
-    >
-      Crear proceso
-    </Link>
+    <div className="flex items-center justify-end gap-3">
+      <Link
+        href={`/admin/procesos/nuevo?email=${encodeURIComponent(lead.email)}&lead=${lead.id}`}
+        className="text-xs font-medium text-forest hover:underline"
+      >
+        Crear proceso
+      </Link>
+      <form action={eliminarLead}>
+        <input type="hidden" name="id" value={lead.id} />
+        <button className="text-xs font-medium text-terracotta hover:underline">
+          Borrar
+        </button>
+      </form>
+    </div>
   );
 }
 
@@ -95,7 +104,7 @@ export default async function LeadsPage() {
                   </div>
                 </dl>
                 <div className="mt-3 border-t border-sand-100 pt-3">
-                  <CrearProceso lead={lead} />
+                  <Acciones lead={lead} />
                 </div>
               </div>
             ))}
@@ -136,7 +145,7 @@ export default async function LeadsPage() {
                       {new Date(lead.created_at).toLocaleDateString("es")}
                     </td>
                     <td className="px-5 py-3 text-right">
-                      <CrearProceso lead={lead} />
+                      <Acciones lead={lead} />
                     </td>
                   </tr>
                 ))}

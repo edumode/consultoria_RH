@@ -1,5 +1,6 @@
 "use server";
 
+import { revalidatePath } from "next/cache";
 import { z } from "zod";
 import { createClient } from "@/lib/supabase/server";
 import { notificarNuevoLead } from "./notify";
@@ -68,4 +69,13 @@ export async function submitLead(
   await notificarNuevoLead(parsed.data);
 
   return { status: "success", nombre: parsed.data.nombre };
+}
+
+/** Borra un lead (form action simple). Solo admin (RLS lo refuerza). */
+export async function eliminarLead(formData: FormData): Promise<void> {
+  const id = String(formData.get("id") ?? "");
+  if (!z.string().uuid().safeParse(id).success) return;
+  const supabase = await createClient();
+  await supabase.from("leads").delete().eq("id", id);
+  revalidatePath("/admin/leads");
 }
