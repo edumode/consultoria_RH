@@ -5,6 +5,7 @@ import {
   actualizarEstadoProceso,
   eliminarProceso,
 } from "@/features/procesos/actions";
+import { ConfirmSubmit } from "@/components/ui/confirm-submit";
 
 export const metadata: Metadata = { title: "Procesos" };
 
@@ -74,9 +75,12 @@ function Borrar({ id }: { id: string }) {
   return (
     <form action={eliminarProceso}>
       <input type="hidden" name="id" value={id} />
-      <button className="text-xs font-medium text-terracotta hover:underline">
+      <ConfirmSubmit
+        message="¿Borrar este proceso? Se eliminará junto con su historial y no se puede deshacer."
+        className="text-xs font-medium text-terracotta hover:underline"
+      >
         Borrar
-      </button>
+      </ConfirmSubmit>
     </form>
   );
 }
@@ -115,7 +119,12 @@ export default async function ProcesosPage() {
                 className="rounded-2xl border border-sand-300 bg-white p-4"
               >
                 <div className="flex items-start justify-between gap-3">
-                  <span className="font-medium text-ink">{p.titulo}</span>
+                  <Link
+                    href={`/admin/procesos/${p.id}/editar`}
+                    className="font-medium text-ink hover:text-forest"
+                  >
+                    {p.titulo}
+                  </Link>
                   <EstadoBadge estado={p.estado} />
                 </div>
                 <a
@@ -129,7 +138,15 @@ export default async function ProcesosPage() {
                 </p>
                 <div className="mt-3 flex flex-wrap items-center justify-between gap-3 border-t border-sand-100 pt-3">
                   <CambiarEstado p={p} />
-                  <Borrar id={p.id} />
+                  <div className="flex items-center gap-3">
+                    <Link
+                      href={`/admin/procesos/${p.id}/editar`}
+                      className="text-xs font-medium text-forest hover:underline"
+                    >
+                      Editar
+                    </Link>
+                    <Borrar id={p.id} />
+                  </div>
                 </div>
               </div>
             ))}
@@ -150,7 +167,14 @@ export default async function ProcesosPage() {
               <tbody>
                 {procesos.map((p) => (
                   <tr key={p.id} className="border-b border-sand-100 last:border-0">
-                    <td className="px-5 py-3 font-medium text-ink">{p.titulo}</td>
+                    <td className="px-5 py-3">
+                      <Link
+                        href={`/admin/procesos/${p.id}/editar`}
+                        className="font-medium text-ink hover:text-forest"
+                      >
+                        {p.titulo}
+                      </Link>
+                    </td>
                     <td className="px-5 py-3 text-stone">
                       <a
                         href={`mailto:${p.cliente_email}`}
@@ -167,7 +191,13 @@ export default async function ProcesosPage() {
                     </td>
                     <td className="px-5 py-3 text-muted">{fecha(p.created_at)}</td>
                     <td className="px-5 py-3">
-                      <div className="flex justify-end">
+                      <div className="flex items-center justify-end gap-3">
+                        <Link
+                          href={`/admin/procesos/${p.id}/editar`}
+                          className="text-xs font-medium text-forest hover:underline"
+                        >
+                          Editar
+                        </Link>
                         <Borrar id={p.id} />
                       </div>
                     </td>

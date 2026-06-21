@@ -86,6 +86,41 @@ export type Database = {
         }
         Relationships: []
       }
+      proceso_bitacora: {
+        Row: {
+          autor: string | null
+          created_at: string
+          estado: string | null
+          id: string
+          nota: string | null
+          proceso_id: string
+        }
+        Insert: {
+          autor?: string | null
+          created_at?: string
+          estado?: string | null
+          id?: string
+          nota?: string | null
+          proceso_id: string
+        }
+        Update: {
+          autor?: string | null
+          created_at?: string
+          estado?: string | null
+          id?: string
+          nota?: string | null
+          proceso_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "proceso_bitacora_proceso_id_fkey"
+            columns: ["proceso_id"]
+            isOneToOne: false
+            referencedRelation: "procesos"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       procesos: {
         Row: {
           cliente_email: string

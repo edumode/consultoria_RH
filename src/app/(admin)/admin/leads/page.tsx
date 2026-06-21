@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { createClient } from "@/lib/supabase/server";
 import { eliminarLead } from "@/features/leads/actions";
+import { ConfirmSubmit } from "@/components/ui/confirm-submit";
 
 export const metadata: Metadata = { title: "Leads" };
 
@@ -44,9 +45,12 @@ function Acciones({ lead }: { lead: LeadRow }) {
       </Link>
       <form action={eliminarLead}>
         <input type="hidden" name="id" value={lead.id} />
-        <button className="text-xs font-medium text-terracotta hover:underline">
+        <ConfirmSubmit
+          message={`¿Borrar el lead de ${lead.nombre}? Esta acción no se puede deshacer.`}
+          className="text-xs font-medium text-terracotta hover:underline"
+        >
           Borrar
-        </button>
+        </ConfirmSubmit>
       </form>
     </div>
   );

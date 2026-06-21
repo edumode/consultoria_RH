@@ -3,6 +3,7 @@ import Link from "next/link";
 import { createClient } from "@/lib/supabase/server";
 import { eliminarPost, enviarNewsletterAction } from "@/features/posts/actions";
 import { isResendConfigured } from "@/features/posts/email";
+import { ConfirmSubmit } from "@/components/ui/confirm-submit";
 
 export const metadata: Metadata = { title: "Blog" };
 
@@ -79,9 +80,12 @@ function Acciones({ p }: { p: PostRow }) {
       </Link>
       <form action={eliminarPost}>
         <input type="hidden" name="id" value={p.id} />
-        <button className="text-xs font-medium text-terracotta hover:underline">
+        <ConfirmSubmit
+          message={`¿Borrar la entrada "${p.titulo}"? Esta acción no se puede deshacer.`}
+          className="text-xs font-medium text-terracotta hover:underline"
+        >
           Borrar
-        </button>
+        </ConfirmSubmit>
       </form>
     </div>
   );
