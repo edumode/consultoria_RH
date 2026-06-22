@@ -17,7 +17,13 @@ export type ProcesoEditable = {
   estado: string;
 };
 
-export function ProcesoEditForm({ proceso }: { proceso: ProcesoEditable }) {
+export function ProcesoEditForm({
+  proceso,
+  notificarDisponible = false,
+}: {
+  proceso: ProcesoEditable;
+  notificarDisponible?: boolean;
+}) {
   const [state, formAction, pending] = useActionState(editarProceso, INITIAL);
 
   return (
@@ -93,6 +99,17 @@ export function ProcesoEditForm({ proceso }: { proceso: ProcesoEditable }) {
           className={inputClass}
         />
       </div>
+
+      {notificarDisponible && (
+        <label className="flex items-center gap-2.5 text-[15px] text-ink-soft">
+          <input
+            type="checkbox"
+            name="notificar"
+            className="h-4 w-4 accent-forest"
+          />
+          Avisar al cliente por correo de esta actualización
+        </label>
+      )}
 
       {state.status === "error" && (
         <p className="rounded-lg bg-[#f7e6e2] px-4 py-3 text-[14px] text-terracotta">

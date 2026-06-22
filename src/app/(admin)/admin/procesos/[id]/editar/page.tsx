@@ -3,6 +3,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { createClient } from "@/lib/supabase/server";
 import { ProcesoEditForm } from "@/features/procesos/proceso-edit-form";
+import { puedeNotificarCliente } from "@/features/procesos/notify";
 
 export const metadata: Metadata = { title: "Editar proceso" };
 
@@ -63,6 +64,7 @@ export default async function EditarProcesoPage({
       </h1>
 
       <ProcesoEditForm
+        notificarDisponible={puedeNotificarCliente}
         proceso={{
           id: proceso.id,
           cliente_email: proceso.cliente_email,

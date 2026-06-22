@@ -5,6 +5,7 @@ import { redirect } from "next/navigation";
 import { z } from "zod";
 import { createClient } from "@/lib/supabase/server";
 import { getSesion } from "@/features/auth/session";
+import { notificarActualizacionCliente } from "./notify";
 
 export type ProcesoState =
   | { status: "idle" }
@@ -33,6 +34,7 @@ const editarSchema = z.object({
   descripcion: z.string().trim().optional(),
   estado: estadoEnum,
   nota: z.string().trim().optional(),
+  notificar: z.boolean(),
 });
 
 type Supabase = Awaited<ReturnType<typeof createClient>>;
@@ -106,6 +108,7 @@ export async function editarProceso(
     descripcion: String(formData.get("descripcion") ?? "").trim(),
     estado: String(formData.get("estado") ?? "pendiente"),
     nota: String(formData.get("nota") ?? "").trim(),
+    notificar: formData.get("notificar") === "on",
   });
 
   if (!parsed.success) {
@@ -128,12 +131,17 @@ export async function editarProceso(
     return { status: "error", message: "No se pudo guardar el proceso." };
   }
 
-  await registrarBitacora(
-    supabase,
-    d.id,
-    d.nota || "Proceso actualizado.",
-    d.estado,
-  );
+  const nota = d.nota || "Proceso actualizado.";
+  await registrarBitacora(supabase, d.id, nota, d.estado);
+
+  if (d.notificar) {
+    await notificarActualizacionCliente({
+      clienteEmail: d.cliente_email,
+      titulo: d.titulo,
+      nota,
+      estado: d.estado,
+    });
+  }
 
   revalidatePath("/admin/procesos");
   revalidatePath(`/admin/procesos/${d.id}/editar`);
