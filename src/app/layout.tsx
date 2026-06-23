@@ -4,7 +4,8 @@ import { SITE_URL } from "@/lib/site";
 import { GoogleAnalytics } from "@/components/analytics/google-analytics";
 import "./globals.css";
 
-const GA_ID = process.env.NEXT_PUBLIC_GA_ID;
+// .trim() para tolerar saltos de línea/espacios al pegar la variable.
+const GA_ID = process.env.NEXT_PUBLIC_GA_ID?.trim();
 
 const sans = Hanken_Grotesk({
   variable: "--font-hanken",
