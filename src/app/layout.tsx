@@ -1,7 +1,10 @@
 import type { Metadata } from "next";
 import { Hanken_Grotesk, Newsreader } from "next/font/google";
 import { SITE_URL } from "@/lib/site";
+import { GoogleAnalytics } from "@/components/analytics/google-analytics";
 import "./globals.css";
+
+const GA_ID = process.env.NEXT_PUBLIC_GA_ID;
 
 const sans = Hanken_Grotesk({
   variable: "--font-hanken",
@@ -64,7 +67,10 @@ export default function RootLayout({
       lang="es"
       className={`${sans.variable} ${serif.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col">{children}</body>
+      <body className="min-h-full flex flex-col">
+        {children}
+        {GA_ID && <GoogleAnalytics gaId={GA_ID} />}
+      </body>
     </html>
   );
 }
