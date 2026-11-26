@@ -15,12 +15,12 @@ export function Equipo() {
   return (
     <section id="equipo" className="bg-cream-light">
       <Container className="py-22 sm:py-[88px]">
-        <div className="mx-auto mb-14 max-w-[620px] text-center">
+        <div className="mx-auto mb-14 max-w-[620px] text-center lg:max-w-none">
           <Eyebrow>Nuestro equipo</Eyebrow>
           <h2 className="mt-3.5 font-serif text-4xl font-medium leading-tight tracking-[-0.01em] text-ink">
             Las personas detrás de cada proceso
           </h2>
-          <p className="mt-4 text-[17px] text-stone">
+          <p className="mt-4 text-[17px] text-stone lg:whitespace-nowrap">
             Especialistas en Recursos Humanos que acompañan a tu empresa de
             principio a fin.
           </p>

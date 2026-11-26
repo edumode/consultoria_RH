@@ -79,7 +79,7 @@ export const EQUIPO: Integrante[] = [
     encuadre: "center top",
   },
   {
-    nombre: "Cesar",
+    nombre: "César",
     puesto: "Analista de Datos",
     foto: "/equipo/cesar.jpg",
     encuadre: "center 15%",
