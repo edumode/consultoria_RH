@@ -56,6 +56,36 @@ export const BENEFICIOS: Beneficio[] = [
   },
 ];
 
+export type Integrante = {
+  nombre: string;
+  puesto: string;
+  /** Ruta en public/, p. ej. "/equipo/ana.jpg". Sin foto se muestran las iniciales. */
+  foto?: string;
+  /** `object-position` CSS para encuadrar la cara en el círculo (p. ej. "center top"). */
+  encuadre?: string;
+};
+
+/** Equipo mostrado en la landing (sección entre el hero y servicios). */
+export const EQUIPO: Integrante[] = [
+  {
+    nombre: "Patricia",
+    puesto: "Especialista en procesos de RRHH",
+    foto: "/equipo/patricia.jpg",
+  },
+  {
+    nombre: "Otto",
+    puesto: "Especialista en SSO",
+    foto: "/equipo/otto.jpg",
+    encuadre: "center top",
+  },
+  {
+    nombre: "Cesar",
+    puesto: "Analista de Datos",
+    foto: "/equipo/cesar.jpg",
+    encuadre: "center 15%",
+  },
+];
+
 /** Opciones del selector "Servicio de interés" del formulario de contacto. */
 export const SERVICIOS_INTERES = [
   "Reclutamiento Estratégico (Headhunting)",
